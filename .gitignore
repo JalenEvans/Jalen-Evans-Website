@@ -1,0 +1,101 @@
+# ============================
+# Global
+# ============================
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+*.swo
+
+# Environment files
+.env
+.env.*
+!env.example
+
+# ====================================
+# Rust / Axum backend (Cargo project)
+# ====================================
+
+# Compiled files
+target/
+debug/
+release/
+
+# Rust package manager files
+Cargo.lock     # optional — include if building an app, ignore if building a library
+
+# Rust tooling
+rustfmt.toml
+.clippy.toml
+
+# ====================================
+# Node / Angular frontend
+# ====================================
+
+# Node modules
+node_modules/
+
+# Angular build output
+dist/
+.angular/
+
+# Angular cache
+.angular/cache/
+.angular/**/cache/
+
+# Temporary Angular files
+*.ngsummary.json
+
+# Environment files
+src/environments/environment.ts
+src/environments/environment.prod.ts
+
+# npm / yarn / pnpm logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Lockfiles (you may keep only one)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ====================================
+# VS Code / Editor Files
+# ====================================
+
+.vscode/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.iml
+
+# ====================================
+# Docker (optional)
+# ====================================
+
+docker-compose.override.yml
+docker-data/
+volumes/
+
+# ====================================
+# PostgreSQL (local dev)
+# ====================================
+
+pgdata/
+*.sql~
+
+# ====================================
+# Misc
+# ====================================
+
+# Backup files
+*.bak
+*.old
+
+# Coverage
+coverage/
+lcov.info
