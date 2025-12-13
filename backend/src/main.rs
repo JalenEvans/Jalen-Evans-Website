@@ -7,6 +7,7 @@ use axum::{
     routing::get,
     Router,
 };
+use tower_http::cors::{CorsLayer, Any};
 use routes::post::post_routes;
 
 #[tokio::main]
@@ -14,10 +15,16 @@ async fn main() {
     // Get database
     let pool = db::get_db_pool().await;
 
+    let cors = CorsLayer::new()
+        .allow_origin(Any)
+        .allow_methods(Any)
+        .allow_headers(Any);
+
     // build our application with a single route
     let app: Router = Router::new()
         .route("/", get(|| async { "Hello, World!" }))
         .merge(post_routes())
+        .layer(cors)
         .with_state(pool);
 
     // run our app with hyper, listening locally on port 3000

@@ -12,6 +12,6 @@ sqlx = { version = "0.8.6", features = ["postgres", "runtime-tokio", "macros", "
 uuid = { version = "1", features = ["serde", "v4"]}
 chrono = { version = "0.4", features = ["serde"]}
 tower = "0.5.2"
-tower-http = "0.6.8"
+tower-http = { version = "0.6.8", features = ["cors"]}
 tracing-subscriber = "0.3"
 dotenv = "0.15.0"
