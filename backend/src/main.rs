@@ -9,9 +9,18 @@ use axum::{
 };
 use tower_http::cors::{CorsLayer, Any};
 use routes::post::post_routes;
+use tracing_subscriber::{EnvFilter};
 
 #[tokio::main]
 async fn main() {
+    // Add tracing
+    tracing_subscriber::fmt()
+        .with_env_filter(
+            EnvFilter::try_from_default_env()
+                .unwrap_or_else(|_| EnvFilter::new("info")),
+        )
+        .init();
+
     // Get database
     let pool = db::get_db_pool().await;
 

@@ -21,6 +21,7 @@ async fn create_post(
     State(pool): State<PgPool>,
     Json(new_post): Json<NewPost>,
 ) -> Result<Json<Post>, AppError> {
+    // Add post to database
     let post = sqlx::query_as!(
         Post,
         r#"

@@ -8,12 +8,25 @@
                 <input matInput formControlName="title" required>
             </mat-form-field>
 
+            @if (title?.invalid && (title?.dirty || title?.touched)) {
+                @if (title?.hasError('required')) {
+                    <em>A title is required.</em>
+                }
+                @if (title?.hasError('maxlength')) {
+                    <em>The title is too many characters.</em>
+                }
+                @if (title?.hasError('databaseError')) {
+                    <em>This title is already in use.</em>
+                }
+                
+            }
+
             <!-- Content Input -->
             <mat-form-field class="w-full">
                 <mat-label>Content</mat-label>
                 <textarea matInput rows="12" formControlName="content" required></textarea>
             </mat-form-field>
-            
+
              <!-- Post Button -->
             <button matButton="elevated" [disabled]="postForm.invalid">Post</button>
         </form>

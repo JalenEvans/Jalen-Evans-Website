@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { PostService, NewPost } from '../../services/post.service';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -38,7 +38,9 @@ export class PostCreator {
 
     this.postService.createPost(newPost).subscribe({
       next: (data) => (console.log("Post created successfully!", data)),
-      error: (err) => (console.log("Error occured: ", err))
+      error: (err) => {
+        this.title?.setErrors({ 'databaseError': 'Post with same title already exists.'})
+      }
     })
   }
 }

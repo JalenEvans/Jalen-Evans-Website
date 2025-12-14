@@ -44,7 +44,7 @@ export class PostService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    console.log(`API Error: ${error}`);
+    console.log(`API Error: ${error.message}`);
     return throwError(() => new Error(error.message || "Server error"));
   }
   

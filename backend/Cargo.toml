@@ -13,5 +13,6 @@ uuid = { version = "1", features = ["serde", "v4"]}
 chrono = { version = "0.4", features = ["serde"]}
 tower = "0.5.2"
 tower-http = { version = "0.6.8", features = ["cors"]}
-tracing-subscriber = "0.3"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt", "env-filter"]}
 dotenv = "0.15.0"
