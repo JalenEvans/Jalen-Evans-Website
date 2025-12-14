@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { PostService, NewPost } from '../../services/post.service';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { ReactiveFormsModule, Validators, FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
@@ -42,5 +42,16 @@ export class PostCreator {
         this.title?.setErrors({ 'databaseError': 'Post with same title already exists.'})
       }
     })
+  }
+
+  onCancel() {
+    this.resetInput(this.title!);
+    this.resetInput(this.content!);
+  }
+
+  resetInput(input: AbstractControl) {
+    input.setValue("")
+    input.markAsPristine();
+    input.markAsUntouched();
   }
 }

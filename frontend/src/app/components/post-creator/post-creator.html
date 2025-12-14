@@ -1,34 +1,46 @@
 <section class="m-4 justify-items-center">
     <!-- Title Input -->
-    <div class="w-1/2 grid gap-4 place-items-center">
-        <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
-            <!-- Title Input -->
-            <mat-form-field class="w-full">
-                <mat-label>Title</mat-label>
-                <input matInput formControlName="title" required>
-            </mat-form-field>
-
-            @if (title?.invalid && (title?.dirty || title?.touched)) {
-                @if (title?.hasError('required')) {
-                    <em>A title is required.</em>
-                }
-                @if (title?.hasError('maxlength')) {
-                    <em>The title is too many characters.</em>
-                }
-                @if (title?.hasError('databaseError')) {
-                    <em>This title is already in use.</em>
-                }
+    <div class="w-full grid gap-4 place-items-center">
+        <form class="w-full" [formGroup]="postForm" (ngSubmit)="onSubmit()">
+            <div class="w-full">
+                <!-- Title Input -->
+                <mat-form-field class="w-full">
+                    <mat-label>Title</mat-label>
+                    <input matInput formControlName="title" required>
+                    @if (title?.invalid && (title?.dirty || title?.touched)) {
+                        @if (title?.hasError('required')) {
+                            <mat-error>A title is required.</mat-error>
+                        }
+                        @if (title?.hasError('maxlength')) {
+                            <mat-error>The title is too many characters.</mat-error>
+                        }
+                        @if (title?.hasError('databaseError')) {
+                            <mat-error>This title is already in use.</mat-error>
+                        }
+                    }
+                </mat-form-field>
                 
-            }
+            </div>
 
-            <!-- Content Input -->
-            <mat-form-field class="w-full">
-                <mat-label>Content</mat-label>
-                <textarea matInput rows="12" formControlName="content" required></textarea>
-            </mat-form-field>
+            <div class="w-full">
+                <!-- Content Input -->
+                <mat-form-field class="w-full">
+                    <mat-label>Content</mat-label>
+                    <textarea matInput rows="12" formControlName="content" required></textarea>
+                    @if (content?.invalid && (title?.dirty || title?.touched)) {
+                        @if (content?.hasError('required')) {
+                            <mat-error>Some content is required.</mat-error>
+                        }
+                    }
+                </mat-form-field>
+                
+            </div>
 
              <!-- Post Button -->
-            <button matButton="elevated" [disabled]="postForm.invalid">Post</button>
+            <div class="space-x-3">
+                <button matButton="elevated" type="button" (click)="onCancel()">Cancel</button>
+                <button matButton="elevated" class="bg-[#005cbb]! text-white! disabled:bg-gray-300! disabled:text-gray-500!" [disabled]="postForm.invalid" type="submit">Post</button>
+            </div>
         </form>
     </div>
 </section>
