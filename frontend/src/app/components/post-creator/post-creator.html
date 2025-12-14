@@ -27,7 +27,7 @@
                 <mat-form-field class="max-w-full">
                     <mat-label>Content</mat-label>
                     <textarea matInput class="h-full" rows="12" formControlName="content" placeholder="Write in Markdown..." required></textarea>
-                    @if (content?.invalid && (title?.dirty || title?.touched)) {
+                    @if (content?.invalid && (content?.dirty || content?.touched)) {
                         @if (content?.hasError('required')) {
                             <mat-error>Some content is required.</mat-error>
                         }
