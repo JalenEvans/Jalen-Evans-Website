@@ -22,17 +22,21 @@
                 
             </div>
 
-            <div class="w-full">
+            <div class="w-full grid grid-cols-2 space-x-5">
                 <!-- Content Input -->
-                <mat-form-field class="w-full">
+                <mat-form-field class="max-w-full">
                     <mat-label>Content</mat-label>
-                    <textarea matInput rows="12" formControlName="content" required></textarea>
+                    <textarea matInput class="h-full" rows="12" formControlName="content" placeholder="Write in Markdown..." required></textarea>
                     @if (content?.invalid && (title?.dirty || title?.touched)) {
                         @if (content?.hasError('required')) {
                             <mat-error>Some content is required.</mat-error>
                         }
                     }
                 </mat-form-field>
+
+                <div class="prose max-w-full h-full block float-right"> 
+                    <markdown [data]="content?.value"></markdown>
+                </div>
                 
             </div>
 

@@ -1,13 +1,14 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, Inject, inject, PLATFORM_ID } from '@angular/core';
 import { PostService, NewPost } from '../../services/post.service';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule, Validators, FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MarkdownComponent } from "ngx-markdown";
 
 @Component({
   selector: 'app-post-creator',
-  imports: [MatInputModule, MatFormFieldModule, ReactiveFormsModule, MatButtonModule],
+  imports: [MatInputModule, MatFormFieldModule, ReactiveFormsModule, MatButtonModule, MarkdownComponent],
   templateUrl: './post-creator.html',
   styleUrl: './post-creator.css',
 })
