@@ -1,6 +1,7 @@
-import { Component, Inject, inject, PLATFORM_ID } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { PostService, NewPost } from '../../services/post.service';
 import { MatInputModule } from '@angular/material/input';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule, Validators, FormGroup, FormBuilder, AbstractControl } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,6 +15,7 @@ import { MarkdownComponent } from "ngx-markdown";
 })
 export class PostCreator {
   private formBuilder = inject(FormBuilder);
+  private snackBar = inject(MatSnackBar);
 
   postForm = this.formBuilder.group({
     title: ["", [Validators.required, Validators.maxLength(25)]],
@@ -38,9 +40,10 @@ export class PostCreator {
     }
 
     this.postService.createPost(newPost).subscribe({
-      next: (data) => (console.log("Post created successfully!", data)),
-      error: (err) => {
+      next: () => (this.snackBar.open('Post Created Successfully!', '', { duration: 3000 })),
+      error: () => {
         this.title?.setErrors({ 'databaseError': 'Post with same title already exists.'})
+        this.snackBar.open('Posting was unsuccessful.', '', { duration: 3000 })
       }
     })
   }
