@@ -1,13 +1,23 @@
 @if (error) {
-  <div>{{error}}</div>
+<div>{{ error }}</div>
 }
-<ul>
-    @for (post of posts; track post.post_id) {
-        <li>
-            <h3>{{ post.title }}</h3>
-            <p>{{ post.content }}</p>
-            <small>Created at: {{ post.created_at }} </small>
-        </li>
-    }
-</ul>
 
+<div class="m-2 place-items-center">
+  @for (post of posts; track post.post_id) {
+  <mat-card class="m-2! p-1! min-w-md max-w-xl border! hover:shadow-sm! cursor-pointer!" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title class="font-semibold!">{{ post.title }}</mat-card-title>
+      <mat-card-subtitle>{{ post.created_at | date }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        {{ post.content | ellipse:150 }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button matButton>EDIT</button>
+      <button matButton>DELETE</button>
+    </mat-card-actions>
+  </mat-card>
+  }
+</div>

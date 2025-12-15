@@ -47,5 +47,4 @@ export class PostService {
     console.log(`API Error: ${error.message}`);
     return throwError(() => new Error(error.message || "Server error"));
   }
-  
 }
