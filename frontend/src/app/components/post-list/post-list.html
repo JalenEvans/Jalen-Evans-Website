@@ -1,13 +1,27 @@
 @if (error) {
-  <div>{{error}}</div>
+<div>{{ error }}</div>
 }
-<ul>
-    @for (post of posts; track post.post_id) {
-        <li>
-            <h3>{{ post.title }}</h3>
-            <p>{{ post.content }}</p>
-            <small>Created at: {{ post.created_at }} </small>
-        </li>
-    }
-</ul>
 
+<div class="m-4 grid grid-cols-[40%_auto] gap-5">
+	<!-- Post List -->
+	@if (posts.length == 0) {
+	<h1>No Posts.</h1>
+	} @else {
+	<div class="m-2place-items-center">
+		@for (post of posts; track post.post_id; let id = $index) {
+		<app-post-item
+			[post]="post"
+			[(selectedPost)]="selectedPost"
+		></app-post-item>
+		}
+	</div>
+	}
+	<!-- Selected Post Viewer -->
+	@if (selectedPost() != null) {
+	<div class="prose w-full justify-self-center">
+		<markdown [data]="selectedPost()!.content"></markdown>
+	</div>
+	} @else {
+	<p class="flex justify-self-center items-center">Select a blog</p>
+	}
+</div>
