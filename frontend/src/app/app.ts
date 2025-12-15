@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
-import { PostCreator } from './components/post-creator/post-creator';
-import { PostList } from './components/post-list/post-list';
+import { NavBar } from './components/nav-bar/nav-bar';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  imports: [PostCreator, PostList],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+	selector: 'app-root',
+	imports: [NavBar, RouterOutlet],
+	templateUrl: './app.html',
+	styleUrl: './app.css',
 })
-export class App {
-
-}
+export class App {}

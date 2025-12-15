@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.nav-link {
+	@apply mt-3 bottom-0 text-sm;
+}
