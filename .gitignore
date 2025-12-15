@@ -99,3 +99,6 @@ pgdata/
 # Coverage
 coverage/
 lcov.info
+
+# Prettier
+.prettierrc

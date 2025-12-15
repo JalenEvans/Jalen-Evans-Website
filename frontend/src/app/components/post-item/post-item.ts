@@ -3,10 +3,11 @@ import { MatCardModule } from '@angular/material/card';
 import { EllipsePipe } from '../../pipes/ellipse-pipe';
 import { DatePipe, NgClass } from '@angular/common';
 import { Post } from '../../services/post.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
 	selector: 'app-post-item',
-	imports: [MatCardModule, EllipsePipe, DatePipe, NgClass],
+	imports: [MatCardModule, MatButtonModule, EllipsePipe, DatePipe, NgClass],
 	templateUrl: './post-item.html',
 	styleUrl: './post-item.css',
 })

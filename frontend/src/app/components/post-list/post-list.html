@@ -2,12 +2,12 @@
 <div>{{ error }}</div>
 }
 
-<div class="grid grid-cols-2 gap-5">
+<div class="m-4 grid grid-cols-[40%_auto] gap-5">
 	<!-- Post List -->
 	@if (posts.length == 0) {
-	<h1 class="justify-self-center">No Posts.</h1>
+	<h1>No Posts.</h1>
 	} @else {
-	<div class="m-2 place-items-center">
+	<div class="m-2place-items-center">
 		@for (post of posts; track post.post_id; let id = $index) {
 		<app-post-item
 			[post]="post"
@@ -18,10 +18,10 @@
 	}
 	<!-- Selected Post Viewer -->
 	@if (selectedPost() != null) {
-	<div class="prose">
+	<div class="prose w-full justify-self-center">
 		<markdown [data]="selectedPost()!.content"></markdown>
 	</div>
 	} @else {
-	<p class="flex justify-center items-center">Select a blog</p>
+	<p class="flex justify-self-center items-center">Select a blog</p>
 	}
 </div>
